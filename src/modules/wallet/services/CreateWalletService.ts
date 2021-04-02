@@ -24,3 +24,5 @@ class CreateWalletService {
     }
   }
 }
+
+export default new CreateWalletService();
