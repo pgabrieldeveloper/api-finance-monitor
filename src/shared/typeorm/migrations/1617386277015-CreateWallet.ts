@@ -16,6 +16,8 @@ export class CreateWallet1617386277015 implements MigrationInterface {
           {
             name: 'balance',
             type: 'decimal',
+            precision: 10,
+            scale: 2,
           },
           {
             name: 'created_at',
