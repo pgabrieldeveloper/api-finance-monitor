@@ -23,5 +23,6 @@ walletRoutes.post(
   }),
   WalletController.add,
 );
+walletRoutes.get('/:id', WalletController.show);
 
 export default walletRoutes;

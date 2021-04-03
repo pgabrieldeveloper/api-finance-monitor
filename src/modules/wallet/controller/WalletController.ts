@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
+import { json, Request, Response } from 'express';
 import AddBalanceService from '../services/AddBalanceService';
 import CreateWalletService from '../services/CreateWalletService';
+import ShowWalletSetvice from '../services/ShowWalletSetvice';
 class WalletController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { balance } = req.body;
@@ -12,6 +13,11 @@ class WalletController {
     const { id } = req.params;
     const { value } = req.body;
     const wallet = await AddBalanceService.execute({ id, value });
+    return res.status(200).json(wallet);
+  }
+  public async show(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const wallet = await ShowWalletSetvice.execute({ id });
     return res.status(200).json(wallet);
   }
 }
