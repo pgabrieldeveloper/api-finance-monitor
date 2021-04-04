@@ -1,23 +1,15 @@
-import User from '../../../user/typeorm/entities/User';
 import {
-  Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('wallet')
-class Wallet {
+@Entity('splent')
+class Splent {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  balance: number;
-
-  @OneToOne(type => User, wallet => Wallet)
-  user: User;
+  value: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -26,4 +18,4 @@ class Wallet {
   updated_at: Date;
 }
 
-export default Wallet;
+export default Splent;

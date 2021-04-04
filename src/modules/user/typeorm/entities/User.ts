@@ -1,7 +1,10 @@
+import Wallet from '../../../wallet/typeorm/entities/Wallet';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -19,6 +22,10 @@ class User {
 
   @Column()
   password: string;
+
+  @OneToOne(type => Wallet, user => User)
+  @JoinColumn()
+  wallet: Wallet;
 
   @CreateDateColumn()
   created_at: Date;
