@@ -14,7 +14,7 @@ class CreateUserService {
   public async execute({ name, email, password }: IRequest): Promise<User> {
     const userRepository = getCustomRepository(UserRepository);
     const user = await userRepository.findByEmail(email);
-    if (!user) {
+    if (user) {
       throw new AppError('User alredy Exists', 401);
     }
     const hasPw = await hash(password, 8);
