@@ -4,5 +4,5 @@ import Gain from '../typeorm/entities/Gain';
 
 const gainRouter = Router();
 
-gainRouter.post('/', GainController.create);
+gainRouter.post('/:id', GainController.create);
 export default gainRouter;

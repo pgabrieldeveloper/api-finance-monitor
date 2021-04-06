@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import Gain from '../../../gain/typeorm/entities/Gain';
-import Spent from '../../../splent/typeorm/entities/Spent';
+import Spent from '../../../spent/typeorm/entities/Spent';
 
 @Entity('wallet')
 class Wallet {

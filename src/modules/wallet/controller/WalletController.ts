@@ -1,6 +1,7 @@
 import { json, Request, Response } from 'express';
 import AddBalanceService from '../services/AddBalanceService';
 import CreateWalletService from '../services/CreateWalletService';
+import RemoveBalanceService from '../services/RemoveBalanceService';
 import ShowWalletSetvice from '../services/ShowWalletSetvice';
 class WalletController {
   public async create(req: Request, res: Response): Promise<Response> {
@@ -13,6 +14,12 @@ class WalletController {
     const { id } = req.params;
     const { value } = req.body;
     const wallet = await AddBalanceService.execute({ id, value });
+    return res.status(200).json(wallet);
+  }
+  public async removeBalance(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const { value } = req.body;
+    const wallet = await RemoveBalanceService.execute({ id, value });
     return res.status(200).json(wallet);
   }
   public async show(req: Request, res: Response): Promise<Response> {

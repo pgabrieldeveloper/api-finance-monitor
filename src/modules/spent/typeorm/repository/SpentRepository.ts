@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
-import Gain from '../entities/Spent';
+import Spent from '../entities/Spent';
 
-@EntityRepository(Gain)
-class SpentRepository extends Repository<Gain> {}
+@EntityRepository(Spent)
+class SpentRepository extends Repository<Spent> {}
 
 export default SpentRepository;

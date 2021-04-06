@@ -17,9 +17,12 @@ class RemoveBalanceService {
       throw new AppError('Wallet not found', 404);
     }
     const spent = spentRepository.create({ value, wallet });
-    await spentRepository.save(spent);
     const newBalance = parseFloat(balance) - value;
     wallet.balance = newBalance;
+    console.log(spent);
+    spent.wallet = wallet;
+    await spentRepository.save(spent);
+
     await walletRepository.save(wallet);
     return wallet;
   }
