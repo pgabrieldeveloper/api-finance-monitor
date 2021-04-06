@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import spentRouter from '../../../modules/spent/routes/spent.route';
 import gainRouter from '../../../modules/gain/routes/gain.routes';
 import userRoutes from '../../../modules/user/routes/user.routes';
 import walletRoutes from '../../../modules/wallet/routes/wallet.routes';
@@ -9,4 +10,5 @@ routes.get('/', (req, res) => {
 routes.use('/wallet', walletRoutes);
 routes.use('/user', userRoutes);
 routes.use('/gain', gainRouter);
+routes.use('/spent', spentRouter);
 export default routes;
