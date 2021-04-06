@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -22,10 +23,10 @@ class Wallet {
   @OneToOne(type => User, wallet => Wallet)
   user: User;
 
-  @OneToMany(type => Gain, wallet => wallet.id)
+  @OneToMany(type => Gain, gain => gain.wallet, { eager: true })
   gains: Gain[];
 
-  @OneToMany(type => Spent, wallet => wallet.id)
+  @OneToMany(type => Spent, spent => spent.wallet, { eager: true })
   splents: Spent[];
 
   @CreateDateColumn()

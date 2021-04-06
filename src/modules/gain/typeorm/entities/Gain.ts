@@ -1,7 +1,9 @@
 import Wallet from '../../../wallet/typeorm/entities/Wallet';
 import {
+  Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -11,9 +13,11 @@ import {
 class Gain {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+  @Column()
   value: number;
 
-  @ManyToOne(type => Wallet, gains => Gain)
+  @ManyToOne(type => Wallet, gains => gains)
+  @JoinColumn({ name: 'walletId' })
   wallet: Wallet;
 
   @CreateDateColumn()

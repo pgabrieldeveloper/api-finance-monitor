@@ -10,7 +10,7 @@ export class addRelation1617506928342 implements MigrationInterface {
     await queryRunner.addColumn(
       'user',
       new TableColumn({
-        name: 'wallet_id',
+        name: 'walletId',
         type: 'uuid',
         isNullable: true,
       }),
@@ -19,7 +19,7 @@ export class addRelation1617506928342 implements MigrationInterface {
       'user',
       new TableForeignKey({
         name: 'walletUser',
-        columnNames: ['wallet_id'],
+        columnNames: ['walletId'],
         referencedTableName: 'wallet',
         referencedColumnNames: ['id'],
         onDelete: 'SET NULL',
@@ -29,6 +29,6 @@ export class addRelation1617506928342 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey('user', 'walletUser');
-    await queryRunner.dropColumn('user', 'wallet_id');
+    await queryRunner.dropColumn('user', 'walletId');
   }
 }

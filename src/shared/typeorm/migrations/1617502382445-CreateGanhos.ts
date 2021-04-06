@@ -16,6 +16,7 @@ export class CreateGanhos1617502382445 implements MigrationInterface {
           {
             name: 'value',
             type: 'decimal',
+            isNullable: false,
           },
           {
             name: 'created_at',

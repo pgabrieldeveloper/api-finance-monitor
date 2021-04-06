@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -16,7 +17,8 @@ class Spent {
   @Column()
   value: number;
 
-  @ManyToOne(type => Wallet, spent => Spent)
+  @ManyToOne(type => Wallet, spent => spent.id)
+  @JoinColumn({ name: 'walletId' })
   wallet: Wallet;
 
   @CreateDateColumn()

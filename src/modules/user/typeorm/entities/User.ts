@@ -23,7 +23,7 @@ class User {
   @Column()
   password: string;
 
-  @OneToOne(type => Wallet, user => User)
+  @OneToOne(type => Wallet, user => User, { eager: true })
   @JoinColumn()
   wallet: Wallet;
 

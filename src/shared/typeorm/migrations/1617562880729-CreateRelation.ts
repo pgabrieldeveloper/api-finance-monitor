@@ -9,38 +9,38 @@ import {
 export class CreateRelation1617562880729 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
-      'wallet',
+      'gain',
       new TableColumn({
-        name: 'gain_id',
+        name: 'walletId',
         type: 'uuid',
         isNullable: true,
       }),
     );
     await queryRunner.addColumn(
-      'wallet',
+      'spent',
       new TableColumn({
-        name: 'spent_id',
+        name: 'walletId',
         type: 'uuid',
         isNullable: true,
       }),
     );
 
     await queryRunner.createForeignKey(
-      'wallet',
+      'gain',
       new TableForeignKey({
-        name: 'gainWallet',
-        columnNames: ['gain_id'],
-        referencedTableName: 'gain',
+        name: 'walletGain',
+        columnNames: ['walletId'],
+        referencedTableName: 'wallet',
         referencedColumnNames: ['id'],
         onDelete: 'SET NULL',
       }),
     );
     await queryRunner.createForeignKey(
-      'wallet',
+      'spent',
       new TableForeignKey({
-        name: 'spentWallet',
-        columnNames: ['spent_id'],
-        referencedTableName: 'spent',
+        name: 'walletSpent',
+        columnNames: ['walletId'],
+        referencedTableName: 'wallet',
         referencedColumnNames: ['id'],
         onDelete: 'SET NULL',
       }),
@@ -48,9 +48,9 @@ export class CreateRelation1617562880729 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('wallet', 'spentWallet');
-    await queryRunner.dropForeignKey('wallet', 'gainWallet');
-    await queryRunner.dropColumn('wallet', 'spent_id');
-    await queryRunner.dropColumn('wallet', 'gain_id');
+    await queryRunner.dropForeignKey('spent', 'walletSpent');
+    await queryRunner.dropForeignKey('gain', 'walletGain');
+    await queryRunner.dropColumn('spent', 'walletId');
+    await queryRunner.dropColumn('gain', 'walletIid');
   }
 }
