@@ -11,6 +11,7 @@ class UserController {
   }
   public async login(req: Request, res: Response): Promise<Response> {
     const { email, password } = req.body;
+    console.log(password);
     const session = await LoginUserService.execute({ email, password });
     return res.status(200).json(session);
   }

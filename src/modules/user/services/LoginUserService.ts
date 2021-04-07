@@ -22,7 +22,11 @@ class LoginUserService {
     if (!user) {
       throw new AppError('User not found', 404);
     }
+    console.log(user);
+    console.log(password);
     const confirmerdPassword = await compare(password, user.password);
+    console.log(1);
+
     if (!confirmerdPassword) {
       throw new AppError('email/password invalid combination');
     }
