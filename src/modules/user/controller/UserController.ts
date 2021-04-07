@@ -1,4 +1,5 @@
 import { json, Request, Response } from 'express';
+import AddWalletToUser from '../services/AddWalletToUser';
 import CreateUserService from '../services/CreateUserService';
 import LoginUserService from '../services/LoginUserService';
 class UserController {
@@ -14,6 +15,12 @@ class UserController {
     console.log(password);
     const session = await LoginUserService.execute({ email, password });
     return res.status(200).json(session);
+  }
+  public async addWallet(req: Request, res: Response): Promise<Response> {
+    const { id } = req.user;
+    const { balance } = req.body;
+    const user = await AddWalletToUser.execute({ id, balance });
+    return res.status(200).json(user);
   }
 }
 
