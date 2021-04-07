@@ -10,20 +10,9 @@ class WalletController {
 
     return res.status(201).json(wallet);
   }
-  public async add(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
-    const { value } = req.body;
-    const wallet = await AddBalanceService.execute({ id, value });
-    return res.status(200).json(wallet);
-  }
-  public async removeBalance(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
-    const { value } = req.body;
-    const wallet = await RemoveBalanceService.execute({ id, value });
-    return res.status(200).json(wallet);
-  }
+
   public async show(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+    const { id } = req.user;
     const wallet = await ShowWalletSetvice.execute({ id });
     return res.status(200).json(wallet);
   }
