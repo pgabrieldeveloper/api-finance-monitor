@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import CreateGainService from '../service/CreateGainService';
 class GainController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+    const { id } = req.user;
     const { value } = req.body;
     console.log(value);
     const gain = await CreateGainService.execute({ value, id });
