@@ -10,4 +10,4 @@ uploads/*
 !uploads/.gitkeep
 ormconfig.json
 ormconfig
-
+src/config
