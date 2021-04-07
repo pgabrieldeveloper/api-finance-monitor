@@ -6,7 +6,7 @@ import walletRoutes from '../../../modules/wallet/routes/wallet.routes';
 import isAuthenticate from '../../../modules/user/middleware/isAuthenticate';
 const routes = Router();
 routes.get('/', (req, res) => {
-  return res.json({ message: 'Olá express' });
+  return res.json({ message: 'Olá fincance-API' });
 });
 routes.use('/wallet', isAuthenticate, walletRoutes);
 routes.use('/user', userRoutes);

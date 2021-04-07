@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
@@ -7,6 +8,7 @@ import '../typeorm';
 import AppError from '../errors/AppError';
 import { errors } from 'celebrate';
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
