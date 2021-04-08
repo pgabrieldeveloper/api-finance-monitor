@@ -10,6 +10,11 @@ module.exports = {
   username,
   password,
   database,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
   entities: ['./dist/modules/**/typeorm/entities/*.js'],
   migrations: ['./dist/shared/typeorm/migrations/*.js'],
   cli: {
