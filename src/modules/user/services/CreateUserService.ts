@@ -1,9 +1,8 @@
 import AppError from '../../../shared/errors/AppError';
-import { CreateDateColumn, getCustomRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UserRepository from '../typeorm/repository/UserRepository';
 import { hash } from 'bcryptjs';
-import WalletRepository from '../../wallet/typeorm/repository/WalletRepository';
 
 interface IRequest {
   name: string;
@@ -13,21 +12,23 @@ interface IRequest {
 
 class CreateUserService {
   public async execute({ name, email, password }: IRequest): Promise<User> {
+    console.log('oioooooooooooooooooooi 1');
     const userRepository = getCustomRepository(UserRepository);
-    const walletRepository = getCustomRepository(WalletRepository);
-    const wallet = await walletRepository.findOne(
-      '3f5dcee0-72a5-4363-86e3-ffdb0f8f7366',
-    );
+    console.log('oiiiiiiiiiiiii 1');
+    console.log('oii 1');
+
     const user = await userRepository.findByEmail(email);
+    console.log('oiidsadasdasdasd 1');
+
     if (user) {
       throw new AppError('User alredy Exists', 401);
     }
+    console.log('oii 1');
     const hasPw = await hash(password, 8);
     const newUser = userRepository.create({
       name,
       email,
       password: hasPw,
-      wallet,
     });
     await userRepository.save(newUser);
     return newUser;
