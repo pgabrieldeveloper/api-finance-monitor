@@ -15,6 +15,6 @@ walletRoutes.post(
   WalletController.create,
 );
 
-walletRoutes.get('/', WalletController.show);
+walletRoutes.get('/:id', WalletController.show);
 
 export default walletRoutes;
