@@ -1,7 +1,7 @@
 const host = process.env.DATABASE_HOST;
 const username = process.env.DATABASE_USER;
 const password = process.env.DATABASE_PASSWORD;
-const port = process.env.PORT;
+const port = process.env.DATABASE_PORT;
 const database = process.env.DATABASE;
 module.exports = {
   type: 'postgres',
