@@ -16,6 +16,9 @@ class AddWalletToUser {
     if (!user) {
       throw new AppError('user Not Found', 404);
     }
+    if (user.wallet) {
+      throw new AppError('Wallet Alredy exists on user');
+    }
     const wallet = await CreateWalletService.execute({ balance });
 
     user.wallet = wallet;
