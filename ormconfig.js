@@ -1,6 +1,6 @@
 module.exports = {
   type: 'postgres',
-  url: 'postgres://postgres:docker@localhost:5432/apimoney',
+  url: process.env.DATABASE_URL,
   entities: ['./build/modules/**/typeorm/entities/*.js'],
   migrations: ['./build/shared/typeorm/migrations/*.js'],
   cli: {
